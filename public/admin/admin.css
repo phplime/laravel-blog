@@ -1,0 +1,53 @@
+p{
+    margin: 0;
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    padding: 0;
+}
+
+[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link.active, [class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link.active:focus, [class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link.active:hover {
+    background-color: #3f474e;
+    color: #fff;
+}
+
+.mt-10{
+    margin-top: 10px;
+}
+.content-wrapper>.content{
+    padding-top: 15px;
+}
+.space-between{
+    justify-content: space-between;
+}
+
+.align-center{
+    align-items: center;
+}
+.mr-5{
+    margin-right: 5px!important;
+}
+.pointer{
+    cursor: pointer;
+}
+.card-footer {
+    padding: .75rem 1.25rem;
+    background-color: transparent;
+    border-top: 4px solid rgba(0,0,0,.1);
+}
+.hidden{
+    display: none;
+}
+
+.bootstrap-tagsinput .badge {
+    margin: 2px 2px;
+    padding: 5px 8px;
+    border-radius: 4px;
+}
+.bootstrap-tagsinput {
+    min-height: calc(2.25rem + 2px);
+}
+img.img-thumb {
+    height: 50px;
+    width: 80px;
+}
