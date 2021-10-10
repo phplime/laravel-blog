@@ -10,7 +10,6 @@
                 </button>
             </div>
         @endif
-        {{ public_path() }}
         <div class="card">
           <div class="card-header"> 
             <h5 class="card-title">All Posts</h5> 
@@ -47,7 +46,7 @@
                                       
                                     @endforelse
                                 </td>
-                                <td><img src="{{ asset($post->image) }}" alt="" class="img-thumb"></td>
+                                <td><img src="{{ asset("storage/$post->image") }}" alt="" class="img-thumb"></td>
                                 <td>
                                     <a href="{{ url("/dashboard/post/{$post->id}/edit") }}" class="btn btn-primary btn-sm">Edit</a>
                                     <a href="{{ url("/delete-post/{$post->id}") }}" class="btn btn-danger btn-sm">Delete</a>

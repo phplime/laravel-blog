@@ -7,6 +7,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Str;
+use Image; //Intervention Image
+use Illuminate\Support\Facades\Storage; //Laravel Filesystem
 
 class PostController extends Controller
 {
@@ -24,8 +26,9 @@ class PostController extends Controller
               ->get(['posts.*', 'categories.name as category_name','users.name as username']);
         
         $data['postList'] =  $posts;
-        
-        return view('backend.post.post_list',['data'=>$data]);
+      
+        return view('backend.post.post_list',compact('data'));
+        // return view('backend.post.post_list',['data'=>$data]);
     }
 
     /**
@@ -70,6 +73,7 @@ class PostController extends Controller
             'status' => $request->status,
         ];
         $lastId = Post::insertGetId($insert);
+       
         $img = $this->fileUpload($request->file('imageFile'),$lastId);
          
          return redirect('/dashboard/post')->with('successMsg','Created Success');  
@@ -171,11 +175,94 @@ class PostController extends Controller
         ];
          $lastId = Post::where('id',$id)
         ->update($insert);
-        $img = $this->fileUpload($request->file('imageFile'),$lastId);
+        $img = $this->imgResize($request->file('imageFile'),$id);
          return redirect('/dashboard/post')->with('successMsg','Created Success');  
     }
     
-   
+   public function imgResize($req,$id,$type=1)
+    {
+       if ($req) {
+ 
+             foreach($req as $file){
+    
+                //get filename with extension
+                $filenamewithextension = $file->getClientOriginalName();
+    
+                //get filename without extension
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+    
+                //get file extension
+                $extension = $file->getClientOriginalExtension();
+    
+                //filename to store
+                $filenametostore = $filename.'_'.uniqid().'.'.$extension;
+            
+                $upload_dir = 'profile_images/';
+                $thumbnail_dir = $upload_dir.'thumbnail/';
+                $thumbnail_store__dir = $upload_dir.'thumbnail/';
+                
+                Storage::put('public/'.$upload_dir. $filenametostore, fopen($file, 'r+'));
+                Storage::put('public/'.$thumbnail_dir. $filenametostore, fopen($file, 'r+'));
+    
+                //Resize image here
+                $thumbnailpath = public_path('storage/'.$thumbnail_store__dir.$filenametostore);
+                $img = Image::make($thumbnailpath)->resize(400, 150, function($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $img->save($thumbnailpath);
+                
+                if($type==1){
+                  $imgData =  $filenametostore ;
+                }else{
+                   $imgData[] = [
+                       'thumb' => $thumbnail_dir.$filenametostore,
+                       'image' => $upload_dir.$filenametostore
+                   ];
+                } 
+               
+            }
+             
+            if($type==1){
+                $old_img = Post::find($id);
+                $img_path = 'storage/'.$old_img->image;
+                $thumb_path = 'storage/'.$old_img->thumb;
+                 
+                if(file_exists($img_path)){
+                     unlink($img_path);
+                } 
+                 
+                if(file_exists($thumb_path)){
+                    unlink($thumb_path);
+                }
+                 
+                $insert = [
+                    'image' => $upload_dir.$imgData,
+                    'thumb' => $thumbnail_dir.$imgData,
+                ]; 
+                $update = Post::where('id',$id)
+                    ->update($insert); 
+            }elseif($type==2){
+                
+                $insert = [
+                    'images' => json_encode($imgData),
+                ];
+                $update = Post::where('id',$id)
+                    ->update($insert); 
+            }elseif($type==3){
+                
+                foreach ($imgData as $key => $img) {
+                    $insert = [
+                        'thumb' => $img['thumb'],
+                        'image' => $img['image'],
+                    ];
+                   $update = Post::where('id',$id)
+                    ->update($insert); 
+                }
+               
+            }
+    
+        }
+    }
 
     /**
      * Remove the specified resource from storage.
