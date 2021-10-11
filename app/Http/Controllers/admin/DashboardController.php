@@ -14,9 +14,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $data = [];
-        $data['page_title'] = 'Dashboard';
-        return view('backend.dashboard',['data'=>$data]);
+        if(auth()->check()){
+            $data = [];
+            $data['page_title'] = 'Dashboard';
+            return view('backend.dashboard',['data'=>$data]);
+        }
+  
+        return redirect("login")->withSuccess('You are not allowed to access');
+        
+        
     } 
     
 

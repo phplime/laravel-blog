@@ -1,5 +1,7 @@
 @include('backend/layouts.header')
-@include('backend/layouts.menu')
-@include('backend/layouts.sidebar')
+@if(!request()->is('login'))
+    @include('backend/layouts.menu')
+    @include('backend/layouts.sidebar')
+@endif
 @yield('content')
 @include('backend/layouts.footer')

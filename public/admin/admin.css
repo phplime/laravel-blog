@@ -33,7 +33,7 @@ h1,h2,h3,h4,h5,h6{
 .card-footer {
     padding: .75rem 1.25rem;
     background-color: transparent;
-    border-top: 4px solid rgba(0,0,0,.1);
+    border-top: 4px solid #f4f6f9;
 }
 .hidden{
     display: none;

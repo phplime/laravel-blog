@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\PostController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\TagController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +23,12 @@ Route::get('/',[DashboardController::class,'index'])->name('frontend');
 Route::get('/delete-category/{id}',[CategoryController::class,'destroy']);
 Route::get('/delete-tags/{id}',[CategoryController::class,'destroy']);
 Route::get('/delete-post/{id}',[PostController::class,'destroy']);
+
+
+Route::get('/login',[AuthController::class,'login']);
+Route::post('auth-login',[AuthController::class,'auth_login'])->name('login.custom');
+
+Route::get('/registration',[AuthController::class,'registration']);
 
 // Route::get('/dashboard/post-list', [DashboardController::class,'all_post']);
 
