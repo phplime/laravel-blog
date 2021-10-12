@@ -60,3 +60,34 @@ img.img-thumb {
     height: 100%;
     width: 100%;
 }
+li.dropdown.user.user-menu {
+    position: relative;
+    line-height: 40px;
+}
+
+li.dropdown.user.user-menu .user-image {
+    height: 30px;
+    width: 30px;
+    margin-top: 1px;
+    border: 1px solid #eee;
+    flex: 0 0 30px;
+}
+
+li.dropdown.user.user-menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+}
+
+li.dropdown.user.user-menu .dropdown-menu {
+    margin-top: 8px;
+}
+span.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.badge {
+    padding: 4px 8px;
+    display: inline-block;
+}

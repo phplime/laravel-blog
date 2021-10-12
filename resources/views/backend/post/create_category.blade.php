@@ -22,7 +22,8 @@
                     </div>
                 </div>
                 <div class="card-footer text-right"> 
-                    <input type="hidden" name="user_id" value="1">
+                    
+                    <a href="{{ url('dashboard/category') }}" class="btn btn-default float-left">Cancel</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>

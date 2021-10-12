@@ -1,7 +1,7 @@
 @extends('backend.layouts.app')
 @section('content')
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-8">
       @if(session()->has('successMsg'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Success!</strong> {{ Session::get('successMsg') }}
@@ -29,12 +29,13 @@
                               <th>Categorry</th>
                               <th>Tags</th>
                               <th>image</th>
+                              <th>Status</th>
                               <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($data['postList'] as $key => $post)
-                              <tr>
+                              <tr id="hide_<?= $post['id'];?>">
                                 <td>{{ $key+1; }}</td>
                                 <td>{{ $post->title; }}</td>
                                 <td>{{ $post->username; }}</td>
@@ -48,8 +49,15 @@
                                 </td>
                                 <td><img src="{{ asset("storage/$post->image") }}" alt="" class="img-thumb"></td>
                                 <td>
-                                    <a href="{{ url("/dashboard/post/{$post->id}/edit") }}" class="btn btn-primary btn-sm">Edit</a>
-                                    <a href="{{ url("/delete-post/{$post->id}") }}" class="btn btn-danger btn-sm">Delete</a>
+                                    @if ($post->status==1)
+                                      <a href="" class="badge badge-success"><i class="fa fa-check"></i> Live</a>
+                                    @else
+                                      <a href="" class="badge badge-danger"><i class="fa fa-ban"></i> Hide</a>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ url("/dashboard/post/{$post->id}/edit") }}" class="btn btn-secondary btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                                    <a href="{{ url("/delete-post/{$post->id}") }}" data-id="{{ $post->id; }}" data-msg="Want to delete?" class="btn btn-danger btn-sm ajaxDelete"><i class="fa fa-trash"></i> Delete</a>
                                 </td>
                               </tr>
                             @empty

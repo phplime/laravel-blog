@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data = [];
-        $data['categoryList'] = Category::all();
+        $data['categoryList'] = Category::where('user_id',user()->id)->get();
         $data['page_title'] = 'All Categories';
         return view('backend.post.category_list',['data'=>$data]);
     }
@@ -48,7 +48,7 @@ class CategoryController extends Controller
         $insert = [
             'slug' => Str::slug($request->name),
             'name' => $request->name,
-            'user_id' => $request->user_id,
+            'user_id' => user()->id,
             'status' => 1,
         ];
         $lasId = Category::insertGetId($insert);
@@ -115,6 +115,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::destroy($id);
-        return back()->with('successMsg','Delete Success');
+        return response()->json(['st'=>1,'msg'=>'Delete Success']);
     }
 }

@@ -24,6 +24,8 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap4-tagsinput@4.1.3/tagsinput.js"></script>
+
+<script src="{{ asset('admin/plugins/sweetalert/sweet-alert.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('admin/js/adminlte.min.js') }}"></script>
 

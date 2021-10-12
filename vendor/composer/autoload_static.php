@@ -36,6 +36,7 @@ class ComposerStaticInit349279a7f20537f3e9f8c42aead64d70
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
+        'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -528,6 +529,7 @@ class ComposerStaticInit349279a7f20537f3e9f8c42aead64d70
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/CategoryController.php',
         'App\\Http\\Controllers\\admin\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/DashboardController.php',
@@ -543,8 +545,8 @@ class ComposerStaticInit349279a7f20537f3e9f8c42aead64d70
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\Login' => __DIR__ . '/../..' . '/app/Models/Login.php',
         'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
-        'App\\Models\\user' => __DIR__ . '/../..' . '/app/Models/user.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

@@ -24,9 +24,10 @@ class AuthController extends Controller
         ]);
         
         $credentials = $request->only('email', 'password');
-        
+        $fieldType = filter_var($credentials, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $credentials = [$fieldType =>$credentials['email'],'password'=>$credentials['password']];
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')->with('successMsg','Invalid credentials');
+            return redirect()->intended('dashboard')->with('successMsg','Login successfull');
         }else{
             session()->flash('successMsg', 'Invalid credentials');
             return redirect()->back();
@@ -43,5 +44,11 @@ class AuthController extends Controller
         ];
         $lastId = User::insertGetId($insert);
          return redirect('/login')->with('successMsg','Created Success');
+    }
+    
+    public function logout(){
+        Session::flush();
+        Auth::logout();
+        return Redirect('login');
     }
 }

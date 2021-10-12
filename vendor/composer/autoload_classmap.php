@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\admin\\CategoryController' => $baseDir . '/app/Http/Controllers/admin/CategoryController.php',
     'App\\Http\\Controllers\\admin\\DashboardController' => $baseDir . '/app/Http/Controllers/admin/DashboardController.php',
@@ -23,8 +24,8 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
+    'App\\Models\\Login' => $baseDir . '/app/Models/Login.php',
     'App\\Models\\Post' => $baseDir . '/app/Models/Post.php',
-    'App\\Models\\user' => $baseDir . '/app/Models/user.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

@@ -6,7 +6,7 @@
   </div>
   <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-6">
+            <div class="col-lg-4">
             @if(session()->has('successMsg'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Success!</strong> {{ Session::get('successMsg') }}
@@ -23,7 +23,7 @@
                         <p class="login-box-msg">Sign in to start your session</p>
                             <div class="card-content">
                                 <div class="input-group mb-3">
-                                    <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email')}}">
+                                    <input type="text" class="form-control" name="email" placeholder="Email" value="{{ old('email')}}">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                         <span class="fas fa-envelope"></span>

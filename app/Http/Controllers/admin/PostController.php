@@ -23,6 +23,7 @@ class PostController extends Controller
         $data['page_title'] = 'All Post';
         $posts = Post::join('categories', 'categories.id', '=', 'posts.cat_id')
               ->join('users', 'users.id', '=', 'posts.user_id')
+              ->where('posts.user_id',user()->id)
               ->get(['posts.*', 'categories.name as category_name','users.name as username']);
         
         $data['postList'] =  $posts;
@@ -40,7 +41,7 @@ class PostController extends Controller
     {
         $data = [];
         $data['page_title'] = 'Create Post';
-        $data['categoryList'] =  Category::where('user_id','1')->get();
+        $data['categoryList'] =  Category::where('user_id',user()->id)->get();
         return view('backend.post.create_post',['data'=>$data]);
     }
 
@@ -66,7 +67,7 @@ class PostController extends Controller
         $insert = [
             'slug' => Str::slug($request->title),
             'title' => $request->title,
-            'user_id' => $request->user_id,
+            'user_id' => user()->id,
             'cat_id' => $request->cat_id,
             'details' => $request->details,
             'tags' => json_encode($request->tags),
@@ -141,7 +142,7 @@ class PostController extends Controller
     {
         $data = [];
         $data['page_title'] = 'Edit Post';
-        $data['categoryList'] =  Category::where('user_id','1')->get();
+        $data['categoryList'] =  Category::where('user_id',user()->id)->get();
         $data['post'] = Post::find($id);
         return view('backend.post.create_post',['data'=>$data]);
     }
@@ -167,7 +168,7 @@ class PostController extends Controller
         $insert = [
             'slug' => Str::slug($request->title),
             'title' => $request->title,
-            'user_id' => $request->user_id,
+            'user_id' => user()->id,
             'cat_id' => $request->cat_id,
             'details' => $request->details,
             'tags' => json_encode($request->tags),
@@ -227,11 +228,11 @@ class PostController extends Controller
                 $img_path = 'storage/'.$old_img->image;
                 $thumb_path = 'storage/'.$old_img->thumb;
                  
-                if(file_exists($img_path)){
+                if(file_exists($img_path) && !empty($old_img->image)){
                      unlink($img_path);
                 } 
                  
-                if(file_exists($thumb_path)){
+                if(file_exists($thumb_path) && !empty($old_img->thumb)){
                     unlink($thumb_path);
                 }
                  
@@ -273,6 +274,6 @@ class PostController extends Controller
     public function destroy($id)
     {
         Post::destroy($id);
-        return back()->with('successMsg','Delete Success');
+        return response()->json(['st'=>1,'msg'=>'Delete Success']);
     }
 }

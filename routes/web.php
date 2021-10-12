@@ -19,28 +19,24 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/',[DashboardController::class,'index'])->name('frontend');
 
+// procted routes
+Route::group(['middleware' => 'auth'], function(){
+    Route::resource('/dashboard/post', PostController::class);
+    Route::resource('/dashboard/category', CategoryController::class);
+    Route::resource('/dashboard/tag', TagController::class);
+    Route::resource('/dashboard', DashboardController::class);
+    Route::get('/delete-category/{id}',[CategoryController::class,'destroy']);
+    Route::get('/delete-tags/{id}',[CategoryController::class,'destroy']);
+    Route::get('/delete-post/{id}',[PostController::class,'destroy']);
+});
 
-Route::get('/delete-category/{id}',[CategoryController::class,'destroy']);
-Route::get('/delete-tags/{id}',[CategoryController::class,'destroy']);
-Route::get('/delete-post/{id}',[PostController::class,'destroy']);
 
-
-Route::get('/login',[AuthController::class,'login']);
-Route::post('auth-login',[AuthController::class,'auth_login'])->name('login.custom');
-
+Route::get('/login',[AuthController::class,'login'])->name('login');
+Route::post('/auth-login',[AuthController::class,'auth_login'])->name('login.custom');
 Route::get('/registration',[AuthController::class,'registration']);
-
-// Route::get('/dashboard/post-list', [DashboardController::class,'all_post']);
-
-
-
-Route::resource('/dashboard/post', PostController::class);
-Route::resource('/dashboard/category', CategoryController::class);
-Route::resource('/dashboard/tag', TagController::class);
+Route::get('/logout',[AuthController::class,'logout']);
 
 
 
 
-
-Route::resource('/dashboard', DashboardController::class);
 
