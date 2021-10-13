@@ -91,3 +91,89 @@ span.badge {
     padding: 4px 8px;
     display: inline-block;
 }
+.label {
+    display: inline-block;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.notify {
+    z-index: 9999!important;
+}
+
+
+
+
+
+.tata {
+    width: 320px;
+    border-radius: 4px!important;
+    color: #000!important;
+    background: #fff!important;
+    font-size: 15px;
+    z-index: 9999;
+    padding: 16px 13px 16px 22px!important;
+    box-shadow: 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%), 0 11px 15px -7px rgb(0 0 0 / 20%);
+}
+.tata .tata-icon {
+    font-size: 1.2em!important;
+    color: inherit;
+    color: #fff!important;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    flex: 0 0 35px;
+    line-height: 33px;
+    text-align: center;
+    margin-left: 20px;
+}
+.tata .tata-close{
+    color: red!important;
+}
+.tata::before {
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    content: "";
+    border-radius: 4px 0 0 4px;
+}
+
+.tata-title{
+    font-weight: bold;
+}
+
+.tata.success .tata-icon, .tata.success::before, .tata.success .tata-progress{
+    background: #20c997!important;
+}
+
+.tata.error .tata-icon, .tata.error::before{
+    background: #e9546b!important;
+}
+.tata.info .tata-icon, .tata.info::before{
+    background: #2ca9e1!important;
+}
+.tata.text .tata-icon, .tata.text::before{
+    background: #323232!important;
+}
+
+.tata.success .tata-body >*{
+    color: #20c997!important;
+}
+
+.tata.error .tata-body >*{
+    color: #e9546b!important;
+}
+.tata.info .tata-body >*{
+    color: #2ca9e1!important;
+}
+.tata.text .tata-body >*{
+    color: #323232!important;
+}

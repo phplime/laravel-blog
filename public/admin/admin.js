@@ -82,6 +82,46 @@ $(function(){
   });
 });
 
+function pushNotify() {
+  new Notify({
+    status: 'success',
+    title: 'Notify Title',
+    text: 'Notify text lorem ipsum',
+    effect: 'fade',
+    speed: 500,
+    customClass: `custom-notify`,
+    customIcon: `<i class="fa fa-home"></i>`,
+    showIcon: true,
+    showCloseButton: true,
+    autoclose: false,
+    autotimeout: 3000,
+    gap: 20,
+    distance: 20,
+    type: 1,
+    position: 'right top'
+  })
+}
 
 
+tata.error('Hello World', 'CSSScript.Com', {
+  position: 'tr',
+  duration: 7000,
+  holding: true,
+  closeBtn: true,
+  progress: true,
+  animate: 'slide'
+  
+})
+ 
+tata.success('Hello World', 'CSSScript.Com', {
+  position: 'tr',
+  duration: 6000,
+  holding: true,
+  closeBtn: true,
+  progress: true,
+  animate: 'slide'
+  
+})
+
+pushNotify();
 }(jQuery)); 

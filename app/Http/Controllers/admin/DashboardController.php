@@ -17,16 +17,20 @@ class DashboardController extends Controller
         if(auth()->check()){
             $data = [];
             $data['page_title'] = 'Dashboard';
+             notify()->success('Laravel Notify is awesome!');
             return view('backend.dashboard',['data'=>$data]);
+            
         }
-  
+       
         return redirect("login")->withSuccess('You are not allowed to access');
         
         
     } 
     
 
-    
+    public function show_alert(){
+         notify()->success('Laravel Notify is awesome!');
+    }
 
     /**
      * Show the form for creating a new resource.
