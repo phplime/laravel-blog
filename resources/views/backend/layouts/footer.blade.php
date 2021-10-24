@@ -29,6 +29,7 @@
 
 <script src="{{ asset('admin/plugins/animate/wow.js') }}"></script>
 <script src="{{ asset('admin/plugins/notify/notify.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/simplesnackbarjs@1.0.0/dist/simpleSnackbar.min.js"></script>
 
 <div id="toasts"></div>
 <!-- AdminLTE App -->

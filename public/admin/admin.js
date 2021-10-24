@@ -106,22 +106,30 @@ function pushNotify() {
 tata.error('Hello World', 'CSSScript.Com', {
   position: 'tr',
   duration: 7000,
-  holding: true,
+  holding: false,
   closeBtn: true,
   progress: true,
   animate: 'slide'
   
 })
- 
-tata.success('Hello World', 'CSSScript.Com', {
-  position: 'tr',
-  duration: 6000,
-  holding: true,
-  closeBtn: true,
+
+new simpleSnackbar(`
+  <h4>Success</h4> 
+  <p>This is a test message</p>
+  `, {
+  icons: {
+    success: '<i class="fa fa-check"></i>',
+    danger: '<i class="fa fa-ban"></i>',
+  },
+  type: 'danger',
+  autohide: true,
+  close: true,
+  style: "toast",
   progress: true,
-  animate: 'slide'
-  
-})
+}).show();
+
+
+
 
 pushNotify();
 }(jQuery)); 
