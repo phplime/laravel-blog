@@ -4,9 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\Feature;
 use Illuminate\Support\Str;
-class CategoryController extends Controller
+
+class FeatureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,9 @@ class CategoryController extends Controller
     public function index()
     {
         $data = [];
-        $data['categoryList'] = Category::where('user_id',user()->id)->get();
-        $data['page_title'] = 'All Categories';
-        return view('backend.post.category_list',['data'=>$data]);
+        $data['page_title'] = "All Feature";
+        $data['feature_list'] =  $data['categoryList'] = Feature::get();
+        return view('backend.admin_activities.feature_list',compact('data'));
     }
 
     /**
@@ -29,8 +30,8 @@ class CategoryController extends Controller
     public function create()
     {
         $data = [];
-        $data['page_title'] = 'Create Categories';
-        return view('backend.post.create_category',['data'=>$data]);
+        $data['page_title'] = 'Create Feature';
+        return view('backend.admin_activities.create_feature',['data'=>$data]);
     }
 
     /**
@@ -46,14 +47,13 @@ class CategoryController extends Controller
         ]);
  
         $insert = [
-            'slug' => Str::slug($request->slug),
+            'slug' => Str::slug($request->name),
             'name' => $request->name,
-            'user_id' => user()->id,
             'status' => 1,
         ];
-        $lasId = Category::insertGetId($insert);
+        $lasId = Feature::insertGetId($insert);
         
-        return redirect('/dashboard/category')->with('successMsg','Created Success');  
+        return redirect('/dashboard/feature')->with('successMsg','Created Success');  
     }
 
     /**
@@ -75,10 +75,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $data = [];
-        $data['page_title'] = 'Edit Categories';
-        $data['category'] = Category::find($id);
-        return view('backend.post.create_category',['data'=>$data]);
+       $data = [];
+        $data['page_title'] = 'Edit Feature';
+        $data['feature'] = Feature::find($id);
+        return view('backend.admin_activities.create_feature',['data'=>$data]);
     }
 
     /**
@@ -90,20 +90,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-  
         $request->validate([
             'name' => 'required',
         ]);
  
         $insert = [
-            'slug' => Str::slug($request->name),
             'name' => $request->name,
         ];
         
-        $user = Category::where('id',$id)
+        $update = Feature::where('id',$id)
         ->update($insert);
+        if($update){
+            return redirect('/dashboard/feature')->with('successMsg','Update Successfully');
+        }else{
+            return redirect('/dashboard/feature')->with('errorMsg','Somethings were wrong');
+        }
         
-       return redirect('/dashboard/category')->with('successMsg','Update Successfully');  
     }
 
     /**
@@ -114,7 +116,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::destroy($id);
-        return response()->json(['st'=>1,'msg'=>'Delete Success']);
+       Feature::destroy($id);
+       return response()->json(['st'=>1,'msg'=>'Delete Success']);
     }
 }

@@ -5,6 +5,10 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\PostController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\TagController;
+use App\Http\Controllers\admin\FeatureController;
+use App\Http\Controllers\admin\PlanController;
+
+
 use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +28,18 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/dashboard/post', PostController::class);
     Route::resource('/dashboard/category', CategoryController::class);
     Route::resource('/dashboard/tag', TagController::class);
-    Route::resource('/dashboard', DashboardController::class);
+    Route::resource('/dashboard/feature', FeatureController::class);
+    Route::resource('/dashboard/plan', PlanController::class);
+    
+    
+    
     Route::get('/delete-category/{id}',[CategoryController::class,'destroy']);
     Route::get('/delete-tags/{id}',[CategoryController::class,'destroy']);
     Route::get('/delete-post/{id}',[PostController::class,'destroy']);
+    Route::get('/delete-feature/{id}',[FeatureController::class,'destroy']);
+    
+    
+    Route::resource('/dashboard', DashboardController::class);
 });
 
 

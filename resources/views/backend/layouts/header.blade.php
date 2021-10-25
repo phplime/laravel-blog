@@ -22,7 +22,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset('admin/plugins/notify/notify.css') }}">
   
   <link rel="stylesheet" href="{{ asset('admin/plugins/sweetalert/sweet-alert.css') }}">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplesnackbarjs@1.0.0/dist/simpleSnackbar.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplesnackbarjs@1.0.0/dist/simpleSnackbar.min.css">
+  <link rel="stylesheet" href="{{ asset('admin/plugins/nice-select/nice-select.css') }}">
+  
+  
+  
+  
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
   

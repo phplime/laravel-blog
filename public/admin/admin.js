@@ -3,6 +3,11 @@
   
     var csrf_token = jQuery('meta[name="csrf-token"]').attr('content');
     
+    $('.niceSelect').niceSelect();
+  
+    
+    
+    
     $(function () {
         // Multiple images preview with JavaScript
         var multiImgPreview = function (input, imgPreviewPlaceholder) {
@@ -103,30 +108,27 @@ function pushNotify() {
 }
 
 
-tata.error('Hello World', 'CSSScript.Com', {
-  position: 'tr',
-  duration: 7000,
-  holding: false,
-  closeBtn: true,
-  progress: true,
-  animate: 'slide'
-  
-})
+$(document).on('click','.submitBtn',function(){
+    $(this).prop('disabled',true);
+    $(this).addClass('btn-loading');
+    $(this).parents('form:first').submit();
+  });
 
-new simpleSnackbar(`
-  <h4>Success</h4> 
-  <p>This is a test message</p>
-  `, {
-  icons: {
-    success: '<i class="fa fa-check"></i>',
-    danger: '<i class="fa fa-ban"></i>',
-  },
-  type: 'danger',
-  autohide: true,
-  close: true,
-  style: "toast",
-  progress: true,
-}).show();
+
+// new simpleSnackbar(`
+//   <h4>Success</h4> 
+//   <p>This is a test message</p>
+//   `, {
+//   icons: {
+//     success: '<i class="fa fa-check"></i>',
+//     danger: '<i class="fa fa-ban"></i>',
+//   },
+//   type: 'danger',
+//   autohide: true,
+//   close: true,
+//   style: "toast",
+//   progress: true,
+// }).show();
 
 
 

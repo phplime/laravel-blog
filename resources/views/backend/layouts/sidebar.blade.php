@@ -45,7 +45,7 @@
                 </li>
 
                 <li class="nav-item {{ request()->is('dashboard/post*') || request()->is('dashboard/category*') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ request()->is('dashboard/*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('dashboard/post*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Blog
@@ -72,6 +72,74 @@
 
                 </li>
 
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user-circle"></i>
+                        <p>
+                           Users
+                        </p>
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a href="{{ url('dashboard/plan') }}" class="nav-link {{ request()->is('dashboard/plan*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cloud-meatball"></i>
+                        <p>
+                           Plans / Packages
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>
+                           Settings
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{{ url('dashboard/feature') }}" class="nav-link {{ request()->is('dashboard/feature*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-wind"></i>
+                        <p>
+                           Features
+                        </p>
+                    </a>
+                </li>
+                
+                <li class="nav-item hidden {{ request()->is('dashboard/settings*') || request()->is('dashboard/settings*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('dashboard/*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Settings
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item ">
+                          <a href="{{ url('/dashboard/post/') }}"
+                              class="nav-link {{ request()->is('dashboard/settings*') ? 'active' : '' }}">
+                              <i class="fa fa-angle-double-right nav-icon"></i>
+                              <p> Settings </p>
+                          </a>
+                      </li>
+                      <li class="nav-item ">
+                          <a href="{{ '/dashboard/category/' }}"
+                              class="nav-link {{ request()->is('dashboard/settings*') ? 'active' : '' }}">
+                              <i class="fa fa-angle-double-right nav-icon"></i>
+                              <p> Packages </p>
+                          </a>
+                      </li>
+                       <li class="nav-item ">
+                          <a href="{{ '/dashboard/category/' }}"
+                              class="nav-link {{ request()->is('dashboard/settings*') ? 'active' : '' }}">
+                              <i class="fa fa-angle-double-right nav-icon"></i>
+                              <p> Features </p>
+                          </a>
+                      </li>
+                    </ul>
+
+                </li>
+                
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
